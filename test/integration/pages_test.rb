@@ -8,6 +8,6 @@ class PagesTest < ActionDispatch::IntegrationTest
 
   test "should get" do
     get root_url
-    assert_response :sucess
+    assert_response :success
   end
 end
