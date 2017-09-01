@@ -8,10 +8,11 @@ class ChefsListingTest < ActionDispatch::IntegrationTest
  end
  
  test "should get chefs lsiting " do
+   sign_in_as(@chef,"password")
    get chefs_path
    assert_template 'chefs/index'
-   assert_select "a[href=?]", chef_path(@chef), text: @chef.name.capitalize
-   assert_select "a[href=?]", chef_path(@chef2), text: @chef2.name.capitalize
+   assert_select 'a[href=?]', chef_path(@chef), text: @chef.name.capitalize
+   assert_select 'a[href=?]', chef_path(@chef2), text: @chef2.name.capitalize
  end
  
  test "should delete chef" do

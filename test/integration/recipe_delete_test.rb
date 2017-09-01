@@ -6,6 +6,7 @@ def setup
   @recipe = Recipe.create(name:"vegatable saute",description:"great vegetable sautee, add vegetable and oil", chef: @chef)
 end
 test "successfully deletetemplate  a recipe" do
+  sign_in_as(@chef,"password")
   get recipe_path(@recipe)
   assert_template 'recipes/show'
   assert_select 'a[href=?]', recipe_path(@recipe),text: "Delete this recipe"
