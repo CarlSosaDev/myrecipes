@@ -9,4 +9,5 @@ Rails.application.routes.draw do
    
    resources :chefs, except: [:new]
    resources :recipes
+  resources :ingredients, except: [:destroy]
 end
