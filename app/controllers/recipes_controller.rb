@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
 
   def show
     # set_recipe()
+    @comments = @recipe.comments.paginate(page: params[:page],per_page: 5)
   end
 
   def create
@@ -60,6 +61,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description)
+    params.require(:recipe).permit(:name, :description, ingredient_ids: [])
   end
 end
