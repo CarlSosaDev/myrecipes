@@ -7,11 +7,12 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = Recipe.new()
   end
 
+  # @pre: call set_recipe()
   def show
-    # set_recipe()
+    @comment = Comment.new()
     @comments = @recipe.comments.paginate(page: params[:page],per_page: 5)
   end
 
@@ -19,10 +20,10 @@ class RecipesController < ApplicationController
     @chef = current_chef
     @recipe = @chef.recipes.new(recipe_params)
     if @recipe.save
-      flash[:success] = 'Recipe was successfully created'
+      flash[:success] = 'Recipe was successfully created';
       redirect_to(recipe_path( @recipe ))
     else
-      render 'new'
+      render 'new';
     end
   end
 
@@ -33,16 +34,16 @@ class RecipesController < ApplicationController
   def update
     # set_recipe()
     if @recipe.update(recipe_params)
-      flash[:success] = 'Recipe was updated succesfully!'
+      flash[:success] = 'Recipe was updated succesfully!';
       redirect_to(recipe_path(@recipe))
     else
-      render 'edit'
+      render 'edit';
     end
   end
 
   def destroy
     Recipe.find(params[:id]).destroy
-    flash[:success] = 'Recipe deleted succesfully'
+    flash[:success] = 'Recipe deleted succesfully';
     redirect_to recipes_path
   end
 
@@ -55,7 +56,7 @@ class RecipesController < ApplicationController
   def require_same_user
     @recipe = set_recipe
       if current_chef != @recipe.chef and !current_chef.admin?
-       flash[:danger] = 'You can only edit or delete you own recipes'
+       flash[:danger] = 'You can only edit or delete you own recipes';
        redirect_to recipes_path
       end
   end
