@@ -1,4 +1,6 @@
 <%= render 'shared/page_title', title:"log in" %>
+<div class="row">
+  <div class="col-md-12">
 
 <%= form_for(:session,:html=>{class:"form-hotizontal",role:"form"}, url:login_path) do |f| %>
 
@@ -6,12 +8,11 @@
         <div class="control-label col-md-2">
             <%= f.label :email %>
         </div>
-
-   <div class="col-md-8">
-       <%= f.email_field :email, class:"form-control", placeholder:"Enter your email" %>
-   </div>
+       <div class="col-md-8">
+         <%= f.email_field :email, class:"form-control", placeholder:"Enter your email" %>
        </div>
-       
+       </div>
+      <br/><br/>
        <div class="form-group">
            <div class="control-label col-md-2">
                <%= f.label :password %>
@@ -20,12 +21,18 @@
                <%= f.password_field :password, class:"form-control", placeholder:"Enter your password" %>
            </div>
        </div>
+         <br/>
+         <br/>
        <div class="form-group">
            <div class="col-md-offset-2 col-md-10">
                <%= f.submit "Log in", class:"btn btn-primary btn-lg btn-xlarge" %>
            </div>
        </div>
 <% end %>
+<br/>
+<br/>
 <div class="center colormatch">
     [ <%= link_to "Dont' have an account? Sign up now!", signup_path %> ]
+</div>
+</div>
 </div>
