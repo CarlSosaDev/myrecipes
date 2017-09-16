@@ -5,11 +5,11 @@ before_action :require_admin, only: [:destroy]
   def index
   @chefs = Chef.paginate(page: params[:page], per_page: 5)
   end
-  
+
   def new
     @chef = Chef.new
   end
-  
+
   def create
     @chef = Chef.new(chef_params)
     if @chef.save
@@ -20,16 +20,16 @@ before_action :require_admin, only: [:destroy]
       render 'new'
     end
   end
-  
+
   def show
     # set_chef()
     @chef_recipes = @chef.recipes.paginate(page: params[:page], per_page: 5)
   end
-  
+
   def edit
    # set_chef()
   end
-  
+
   def update
      # set_chef()
      if @chef.update(chef_params)
@@ -39,7 +39,7 @@ before_action :require_admin, only: [:destroy]
        render 'edit'
      end
   end
-  
+
   def destroy
     # set_chef()
     if !@chef.admin?
@@ -47,7 +47,7 @@ before_action :require_admin, only: [:destroy]
     flash[:danger] = "Chef and all associated recipes have been deleted!"
     redirect_to chefs_path
     end
-    end
+  end
 
 
   private
@@ -72,5 +72,5 @@ before_action :require_admin, only: [:destroy]
   def chef_params
     params.require(:chef).permit(:name,:email,:password,:password_confirmation)
   end
-  
+
 end
