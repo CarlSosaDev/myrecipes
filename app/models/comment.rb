@@ -6,14 +6,13 @@ class Comment < ApplicationRecord
     validates :chef_id, presence: true
     validates :recipe_id, presence: true
     default_scope -> {order(updated_at: :desc)}
-end
-=begin
-Ninja.class_eval do
-  _validators[:martial_art]
+
+
+Comment.class_eval do
+  _validators[:article]
     .find { |v| v.is_a? ActiveRecord::Validations::PresenceValidator }
     .attributes
-    .delete(:martial_art)
+    .delete(:article)
 end
 
-
-=end
+end

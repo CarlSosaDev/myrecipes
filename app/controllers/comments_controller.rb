@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
     def create
       @recipe = Recipe.find(params[:recipe_id])
+      @comment = Comment.new()
       @comment = @recipe.comments.build(comment_params)
       @comment.chef = current_chef
       if @comment.save()
@@ -16,6 +17,6 @@ class CommentsController < ApplicationController
 private
 
   def comment_params()
-     params.require(:comment).permit(:description)
+     params.require(:comment).permit(:description,:recipe_id)
   end
 end
