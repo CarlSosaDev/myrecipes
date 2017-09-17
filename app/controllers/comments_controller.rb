@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
       @chef = current_chef
       @comment = Comment.new(comment_params)
       @comment.chef = @chef
-      @comment.recipe @recipe
+      @comment.recipe = @recipe
       if @comment.save()
         flash[:success] = 'Comment was created successfully';
         redirect_to recipe_path(@recipe)
