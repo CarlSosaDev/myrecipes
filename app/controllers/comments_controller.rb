@@ -4,10 +4,9 @@ class CommentsController < ApplicationController
     def create
       @recipe = Recipe.find(params[:recipe_id])
       @chef = current_chef
-      @comment = Comment.new()
+      @comment = Comment.new(comment_params)
       @comment.chef = @chef
       @comment.recipe @recipe
-      @comment.description = comment_params
       if @comment.save()
         flash[:success] = 'Comment was created successfully';
         redirect_to recipe_path(@recipe)
