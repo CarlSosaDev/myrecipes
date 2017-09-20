@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   root "pages#home"
   get 'pages/home', to: 'pages#home'
   get '/signup', to:'chefs#new'
@@ -12,6 +13,6 @@ Rails.application.routes.draw do
      resources :comments, only: [:create]
    end
   resources :ingredients, except: [:destroy]
-  mount ActionCable.server => '/cable';
+
 
 end

@@ -1,8 +1,8 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-     identified_by :current_chef
+    identified_by :current_chef
     def Connect
-      self.current_chef = find_current_user()
+      self.current_chef = find_current_user
     end
 
     def disconnect
@@ -11,13 +11,15 @@ module ApplicationCable
 
 
     protected
-    def find_current_user()
-     if current_chef = Chef.find_by(id: cookies.signed[:chef_id])
-       current_chef
-     else
-       reject_unauthorized_connection
-     end
+
+    def find_current_user
+      if current_chef = Chef.find_by(id: cookies.signed[:chef_id])
+        current_chef
+      else
+        reject_unauthorized_connection
+      end
     end
   end
 
 end
+#//= require rails-ujs

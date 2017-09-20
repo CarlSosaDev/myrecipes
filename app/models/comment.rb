@@ -15,4 +15,5 @@ Comment.class_eval do
     .delete(:article)
 end
 end
+
 end

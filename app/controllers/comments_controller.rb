@@ -3,18 +3,18 @@ class CommentsController < ApplicationController
 
     def create
       @recipe = Recipe.find(params[:recipe_id])
-      @chef = current_chef
-      @comment = Comment.new(comment_params)
-      @comment.chef = @chef
-      @comment.recipe = @recipe
-      if @comment.save()
-        ActionCable.server.broadcast "comments", render(partial: 'comments/comment', object: @comment)
+      @comment = @recipe.comments.build(comment_params)
+      @comment.chef = current_chef
+     # @comment.recipe = @recipe;
+       if @comment.save()
+         ActionCable.server.broadcast "comments",
+                render(partial: 'comments/comment', object: @comment)
         #flash[:success] = 'Comment was created successfully';
         #redirect_to recipe_path(@recipe)
-      else
+       else
         flash[:danger] = 'Comment was not created';
         redirect_back(fallback_location: root_path)
-      end
+       end
     end
 private
 
