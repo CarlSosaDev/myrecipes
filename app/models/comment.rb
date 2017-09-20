@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
     validates :chef_id, presence: true
     validates :recipe_id, presence: true
     default_scope -> {order(updated_at: :desc)}
-
+=begin
 if Rails.env.production?
 Comment.class_eval do
   _validators[:article]
@@ -14,6 +14,8 @@ Comment.class_eval do
     .attributes
     .delete(:article)
 end
+
 end
+=end
 
 end
