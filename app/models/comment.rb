@@ -16,6 +16,6 @@ Comment.class_eval do
 end
 
 end
-=endx
+=end
 
 end
