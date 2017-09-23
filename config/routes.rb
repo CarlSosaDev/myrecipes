@@ -11,6 +11,9 @@ Rails.application.routes.draw do
    resources :chefs, except: [:new]
    resources :recipes do
      resources :comments, only: [:create]
+     member do
+       post 'like'
+     end
    end
   resources :ingredients, except: [:destroy]
 
