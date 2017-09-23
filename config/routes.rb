@@ -14,5 +14,7 @@ Rails.application.routes.draw do
    end
   resources :ingredients, except: [:destroy]
 
+   get '/chat', to:'chatrooms#show'
 
+   resources :messages,only: [:create]
 end
