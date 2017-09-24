@@ -28,3 +28,5 @@ config/secrets.yml.key
 
 # Hidden files
 /public/uploads
+/.idea
+.idea

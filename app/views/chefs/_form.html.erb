@@ -1,10 +1,10 @@
 <%= render 'shared/errors', obj: @chef %>
 
 <div class="row">
-<div class="col-md-12">
+<div class="col-md-2">
   <%= form_for(@chef, :html=>{class: "form-horizontal", role: "form"}) do |f| %>
     <div class="form-group">
-      <div class="control-label col-md-2">
+      <div class="control-label col-md-12">
         <%= f.label :name, "Choose Chefname" %>
       </div>
       <div class="col-md-8">
