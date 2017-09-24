@@ -4,8 +4,13 @@
 <div align="center">
     <%=  will_paginate %>
 </div>
-<%= render 'recipe', obj:@recipes %>
-
+<% if @recipes.blank? %>
+    <div align="center">
+      <h4>There are no recipes with the word <label style="color: orangered;">'<%= params[:search] %>'</label>.</h4>
+    </div>
+<% else %>
+  <%= render 'recipe', obj:@recipes %>
+<% end %>
 <div align="center">
     <% will_paginate %>
 </div>

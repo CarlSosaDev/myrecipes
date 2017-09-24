@@ -8,4 +8,5 @@ def self.most_recent
  order(:created_at).last(20)
 
 end
+
 end
