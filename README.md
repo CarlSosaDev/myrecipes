@@ -21,4 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Heroku app: https://whispering-wave-57018.herokuapp.com/, feel free to use.
